@@ -1,0 +1,11 @@
+# Welcome to the Servertimizer Config
+# All important config values are here and pretty
+# much all of it is configurable in some way!
+
+freezeServer:
+  enabled: true
+  shouldWrite: true
+  broadcast: "&8[&dServertimizer&8] &fServer has been frozen!"
+  players:
+    sendMessageToPlayer: true
+    messageToSend: "&c&lServer is currently frozen"
