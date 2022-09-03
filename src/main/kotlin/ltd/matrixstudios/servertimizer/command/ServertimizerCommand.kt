@@ -4,6 +4,7 @@ import co.aikar.commands.BaseCommand
 import co.aikar.commands.annotation.CommandAlias
 import co.aikar.commands.annotation.CommandPermission
 import co.aikar.commands.annotation.HelpCommand
+import co.aikar.commands.annotation.Subcommand
 import ltd.matrixstudios.servertimizer.util.Chat
 import org.bukkit.entity.Player
 
@@ -21,5 +22,11 @@ class ServertimizerCommand : BaseCommand()
         player.sendMessage(Chat.format("&d/servertimizer threads &7- &fView all threads"))
         player.sendMessage(Chat.format("&d/servertimizer environment &7- &fLooks at environment info"))
         player.sendMessage(Chat.format("&d=&5=&d= &dLooking at &f4 &dresults. &d=&5=&d="))
+    }
+
+    @Subcommand("metrics")
+    fun metrics(player: Player)
+    {
+
     }
 }

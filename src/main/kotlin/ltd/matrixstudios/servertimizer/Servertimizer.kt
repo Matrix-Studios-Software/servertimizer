@@ -8,6 +8,7 @@ import ltd.matrixstudios.servertimizer.command.ServertimizerCommand
 import ltd.matrixstudios.servertimizer.freeze.FrozenServerJsonConfig
 import ltd.matrixstudios.servertimizer.freeze.events.FrozenServerSubscriber
 import ltd.matrixstudios.servertimizer.tps.TPSTracker
+import ltd.matrixstudios.servertimizer.util.menu.listener.MenuListener
 import me.lucko.helper.plugin.ExtendedJavaPlugin
 import me.lucko.helper.plugin.ap.Plugin
 
@@ -54,6 +55,7 @@ class Servertimizer : ExtendedJavaPlugin()
     private fun loadListeners()
     {
         FrozenServerSubscriber.loadAll()
+        server.pluginManager.registerEvents(MenuListener(), this)
     }
 
     private fun loadCommands()

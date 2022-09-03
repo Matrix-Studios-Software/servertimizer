@@ -19,7 +19,6 @@ object FrozenServerService
         val entry = generateEntry()
 
         val config = Servertimizer.instance.config
-
         if (config.getBoolean("freezeServer.shouldWrite"))
         {
             FrozenServerJsonConfig.insertEntry(entry)
