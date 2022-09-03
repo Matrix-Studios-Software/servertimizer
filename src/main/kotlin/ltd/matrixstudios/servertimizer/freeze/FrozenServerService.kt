@@ -1,19 +1,31 @@
 package ltd.matrixstudios.servertimizer.freeze
 
+import ltd.matrixstudios.servertimizer.Servertimizer
 import ltd.matrixstudios.servertimizer.freeze.model.FrozenServerEntry
 import ltd.matrixstudios.servertimizer.heartbeat.ServerHeartbeat
+import ltd.matrixstudios.servertimizer.tps.TPSTracker
+import ltd.matrixstudios.servertimizer.util.Chat
+import org.bukkit.Bukkit
 import java.util.*
 
 object FrozenServerService
 {
-    private var serverFrozen = false
+    var serverFrozen = false
 
     fun commenceFreeze()
     {
         serverFrozen = true
 
         val entry = generateEntry()
-        FrozenServerJsonConfig.insertEntry(entry)
+
+        val config = Servertimizer.instance.config
+
+        if (config.getBoolean("freezeServer.shouldWrite"))
+        {
+            FrozenServerJsonConfig.insertEntry(entry)
+        }
+
+        Bukkit.broadcastMessage(Chat.format("freezeServer.broadcast"))
     }
 
     fun generateEntry() : FrozenServerEntry
@@ -25,7 +37,7 @@ object FrozenServerService
                 ),
             System.currentTimeMillis(),
             ServerHeartbeat(
-                20.0,
+                TPSTracker.TPS,
                 System.currentTimeMillis()
             )
         )
